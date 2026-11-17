@@ -1,0 +1,17 @@
+# Foundry
+out/
+cache/
+broadcast/*/31337/
+
+# 环境与密钥（绝对不要提交）
+.env
+.env.*
+*.key
+*.pem
+keystore/
+
+# 编辑器 / 系统
+.DS_Store
+.idea/
+.vscode/
+node_modules/
