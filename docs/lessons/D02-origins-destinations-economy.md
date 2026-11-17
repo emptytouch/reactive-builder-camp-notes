@@ -155,7 +155,35 @@ cast send --rpc-url $REACTIVE_RPC --private-key $PK $SYSTEM_CONTRACT_ADDR \
 
 ---
 
-## 六、今天该动手的 4 条命令
+## 六、今天该动手：平台任务要求的 3 条 cast 查询（+60 分）
+
+WCB 平台上「读懂费用」这个任务的原文是——**用 cast 查询 Lasna 系统合约参数**。所以光看懂概念不够，必须把参数的**真实输出**贴进打卡笔记。
+
+先在官方速查表或 [Reactive Mainnet & Lasna](https://dev.reactive.network/reactive-mainnet) 拿到 **Lasna 系统合约地址**，设为环境变量：
+
+```bash
+export REACTIVE_RPC=https://lasna-rpc.rnk.dev/
+export SYSTEM_CONTRACT_ADDR=0x...   # ← 从速查表复制，别猜
+
+# 1. 定价系数（读出来除以 1000 才是 C）
+cast call $SYSTEM_CONTRACT_ADDR "_gasPriceCoeffPer1000()" --rpc-url $REACTIVE_RPC | cast to-dec
+# 2. 固定 gas 附加费 K
+cast call $SYSTEM_CONTRACT_ADDR "_extraGas()" --rpc-url $REACTIVE_RPC | cast to-dec
+# 3. 支付 gas 预算（pay() 的上限，不进入费用公式）
+cast call $SYSTEM_CONTRACT_ADDR "_maxChargeGas()" --rpc-url $REACTIVE_RPC | cast to-dec
+```
+
+把三条输出抄进笔记的表格：
+
+| 参数 | 查询命令 | 实测值 | 我的解读 |
+|---|---|---|---|
+| `_gasPriceCoeffPer1000` | | | 除以 1000 = C |
+| `_extraGas` | | | 固定底噪 K，单位 gas |
+| `_maxChargeGas` | | | `pay()` 的 gas 上限 |
+
+> 官方给的**初始值**是 1000 / 100,000 / 50,000，但**所有者可以改**，所以要读链上的实际值。读到跟初始值不一样不是你错了，是配置被改过——这恰恰是任务的考点。
+
+### 补充：查你自己合约的三个数（等 D3 部署后做）
 
 挑一个你自己部署过的合约（还没有就等 D3），把三个数查出来写进笔记：
 

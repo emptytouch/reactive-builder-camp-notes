@@ -50,7 +50,7 @@ Reactive Network 让智能合约自己「动起来」：合约直接监听任意
 | 日 | 学习目标 | 材料 | 任务 |
 |---|---|---|---|
 | **D1 11/16** 为什么需要 Reactive · 开营 | 说清它解决的问题（不跑 bot / Keeper，由网络监听并代发交易）；知道适合与不适合做什么 | [Reactive Contracts](https://dev.reactive.network/reactive-contracts)、[Reactive Circuit](https://blog.reactive.network/reactive-circuit-incentive-program-for-working-integrations/) | 用例拆解卡；Session 1 |
-| **D2 11/17** 源链、目标链与资金模型 | 哪些链能做源/目标链、主网与测试网不能混用；`balance` / `reserves` / `debt` 三个数——**有欠款就停止执行**；`react()` 回滚照样收费 | [Origins & Destinations](https://dev.reactive.network/origins-and-destinations)、[Economy](https://dev.reactive.network/economy) | 读懂费用 |
+| **D2 11/17** 源链、目标链与资金模型 | 哪些链能做源/目标链、主网与测试网不能混用；`balance` / `reserves` / `debt` 三个数——**有欠款就停止执行**；`react()` 回滚照样收费 | [Origins & Destinations](https://dev.reactive.network/origins-and-destinations)、[Economy](https://dev.reactive.network/economy) | 读懂费用（平台任务：**用 cast 查询 Lasna 系统合约参数**，+60） |
 | **D3 11/18** 场景 1 监控：第一个合约 | 构造函数里订阅；通配符与 `REACTIVE_IGNORE`；`react()` 加 `onlySystem`、按 opCode 解码；设次数上限；部署到 Lasna 并充值，浏览器上看到 `react()` 被调用 | [Subscriptions / Reacting To Events](https://dev.reactive.network/reactive-contracts)、omni 分支 [Xfers.sol](https://github.com/Reactive-Network/reactive-smart-contract-demos/tree/omni/src/micro-demos/Xfers.sol)、场景手册场景 1 | 第一次部署 |
 | **D4 11/19** 场景 2 跨链回调 | 把「看到事件」变成「在另一条链做事」。Callback 合约继承 `AbstractCallback`，**第一个参数必须是 address**（代理注入），加 `onlyServiceProvider` + `onlyCallbackSender` 两道校验；回调合约也要有余额 | [Callback Contracts](https://dev.reactive.network/callback-contracts)、[Requesting Callbacks](https://dev.reactive.network/reactive-contracts)、omni 分支 CallbackSender / CallbackRecipient | **跨链回调三步走（必做）**；20:00 技术 Q&A |
 | **D5 11/20** 场景 5 定时与动态订阅 | 订阅 Cron 事件（仍由 `0x…fffFfF` 发出）实现「每 N 个区块执行」；运行时增删订阅；给自动化加次数与额度上限 | [Subscribing To CRON / Changing Subscriptions At Runtime](https://dev.reactive.network/reactive-contracts)、omni 分支 Cron / Xfers | 定时或动态订阅 |
@@ -131,3 +131,20 @@ Reactive Network 让智能合约自己「动起来」：合约直接监听任意
 3. Base Sepolia 200 毫秒出块 → 计时、冷却、截止时间一律用**时间戳**，不用区块数（黑客松规则明确要求）。
 4. 回调合约第一个参数必须是 `address`（代理注入），并且要有余额才能被调用。
 5. 私钥 / 助记词永不外传，不写进代码、笔记、GitHub；打卡笔记是公开的。
+
+## 10. WCB 平台当前任务状态（2026-11-18 截图）
+
+页面标签：`进行中 4`、`即将开始 12`、`已完成 4`，另有已提交/待审核、已驳回、已失效、助教反馈。所有进行中任务均显示「剩余 18 天」（截止 12/05 23:59 北京时间）。
+
+| 状态 | 分值 | 任务名 | 对应日 | 备注 |
+|---|---|---|---|---|
+| 进行中 | +20 | 参与或回看：Online Session 2｜技术 Q&A | D4 11/19 20:00 | 附加任务，不计入核心 600 分门槛 |
+| 进行中 | **+80** | 第一次部署：监控 Sepolia 上的代币转账 | D3 11/18 | 核心任务，分值是核心任务里最高的一档 |
+| 进行中 | +60 | 读懂费用：用 **cast 查询 Lasna 系统合约参数** | D2 11/17 | 核心任务。**注意不是写概念，是要把参数查出来** |
+| 进行中 | +60 | 用例拆解卡：Reactive 适合解决什么问题 | D1 11/16 | 核心任务，可补交 |
+
+四项合计 220 分。核心任务共 12 个 / 1040 分，结业门槛 600 分，因此 D3 的 80 分 deployment 任务不能跳过。
+
+**关键校正**：之前我按课程大纲把 D2 理解为“读懂费用”概念题，截图显示平台要求的是**用 `cast` 查询 Lasna 系统合约的实际参数**，并把查询结果贴进打卡笔记。因此今天的笔记必须包含 `_gasPriceCoeffPer1000()`、`_extraGas()`、`_maxChargeGas()` 三条命令的**真实输出**。
+
+> 进行中任务的完整 JSON 需要 GitHub 登录才能拉取（`tasks.listForLearner` 返回 401），截图是当前唯一来源；接口边界与拉取命令见 `docs/wcb-api.md`。
