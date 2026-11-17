@@ -58,7 +58,8 @@ Reactive Network 让合约自己「动起来」：任意链上发生事件（转
 ├─ AGENTS.md           # 给 AI 编程工具的项目上下文（Omni 写法 / 红线 / 约定）
 ├─ docs/
 │  ├─ camp-map.md      # 课程全景：每日学习内容 + 任务 + 场景手册 + 评分标准
-│  └─ ai-playbook.md   # AI 协作手册：每日循环 + 分工 + 可复制 prompt
+│  ├─ ai-playbook.md   # AI 协作手册：每日循环 + 分工 + 可复制 prompt
+│  └─ lessons/         # 每日中文精讲（官方英文文档的翻译 + 讲解 + 自测）
 ├─ notes/              # 每日笔记，一天一个 md，命名 YYYY-MM-DD.md
 └─ .gitignore
 ```
@@ -67,6 +68,15 @@ Reactive Network 让合约自己「动起来」：任意链上发生事件（转
 - 想看「AI 怎么配合我每天推进」→ [docs/ai-playbook.md](docs/ai-playbook.md)
 
 第 2 周开始做项目后，本仓只保留学习与练习记录；参赛作品另开独立仓库（`reactive-<项目名>`），保持作品仓提交历史干净——这是「作品在活动期间构建」最直接的证据。
+
+## 每日中文精讲
+
+官方文档全英文，这里按天做中文讲解（术语对照 + 重点 + 坑 + 自测题），笔记和打卡从这些内容里提炼。
+
+| 日 | 主题 | 精讲 |
+|---|---|---|
+| D1 | 为什么需要 Reactive | [docs/lessons/D01-why-reactive.md](docs/lessons/D01-why-reactive.md) |
+| D2 | 源链、目标链与资金模型 | [docs/lessons/D02-origins-destinations-economy.md](docs/lessons/D02-origins-destinations-economy.md) |
 
 ## 学习资源
 
