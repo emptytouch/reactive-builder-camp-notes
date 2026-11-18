@@ -77,6 +77,7 @@ Reactive Network 让合约自己「动起来」：任意链上发生事件（转
 |---|---|---|
 | D1 | 为什么需要 Reactive | [docs/lessons/D01-why-reactive.md](docs/lessons/D01-why-reactive.md) |
 | D2 | 源链、目标链与资金模型 | [docs/lessons/D02-origins-destinations-economy.md](docs/lessons/D02-origins-destinations-economy.md) |
+| D3 | 第一个 Reactive 合约：订阅 Sepolia 的代币转账 | [docs/lessons/D03-first-reactive-contract.md](docs/lessons/D03-first-reactive-contract.md) |
 
 ## 学习资源
 
