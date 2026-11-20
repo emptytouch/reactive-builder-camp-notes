@@ -78,6 +78,8 @@ Reactive Network 让合约自己「动起来」：任意链上发生事件（转
 | D1 | 为什么需要 Reactive | [docs/lessons/D01-why-reactive.md](docs/lessons/D01-why-reactive.md) |
 | D2 | 源链、目标链与资金模型 | [docs/lessons/D02-origins-destinations-economy.md](docs/lessons/D02-origins-destinations-economy.md) |
 | D3 | 第一个 Reactive 合约：订阅 Sepolia 的代币转账 | [docs/lessons/D03-first-reactive-contract.md](docs/lessons/D03-first-reactive-contract.md) |
+| D4 | 从监控到动作：跨链回调三步走（必做） | 已在 D3 实测跑通，见 [notes/2026-11-18.md](notes/2026-11-18.md) |
+| D5 | 定时任务与动态订阅（Cron / 运行时增删订阅） | [docs/lessons/D05-cron-and-dynamic-subscription.md](docs/lessons/D05-cron-and-dynamic-subscription.md) |
 
 ## 学习资源
 
